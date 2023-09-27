@@ -1,3 +1,3 @@
-web: gunicorn python.wsgi
-worker: node express_app/index.js
+web: python python/manage.py runserver
+# worker: node express_app/index.js
 worker: npm install --prefix scraping
