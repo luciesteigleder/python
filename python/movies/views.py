@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
+@csrf_exempt
 def homepage(request):
-    return render(request, 'movies/homepage.html')
+    return render(
+        request,
+          'movies/homepage.html'
+            )
