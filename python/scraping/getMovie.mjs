@@ -17,8 +17,6 @@ const deleteAllMovieIDs = async (model) => {
   }
 };
 
-let movieTitle = "manchester by the sea";
-
 //get the 25 first reviews
 const getReviews = async (axios, movieURL) => {
   try {
@@ -54,15 +52,15 @@ const getReviews = async (axios, movieURL) => {
   }
 };
 
-export const fetchData = async (axios) => {
+export const fetchData = async (axios, movieName) => {
   try {
     await connection();
     // console.log("connection to the DB established");
 
     // await deleteAllMovieIDs(MovieID);
-
+    console.log(movieName);
     const response = await axios.get(
-      `https://www.imdb.com/find/?q=${movieTitle}`,
+      `https://www.imdb.com/find/?q=${movieName}`,
       {
         headers: {
           "User-Agent":
@@ -80,7 +78,7 @@ export const fetchData = async (axios) => {
     const href = linkElements.first().attr("href");
 
     const data = {};
-    data.movieName = movieTitle;
+    data.movieName = movieName;
     data.movieID = href;
 
     const movieURL = data.movieID.split("?")[0];
