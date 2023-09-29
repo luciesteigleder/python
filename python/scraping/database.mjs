@@ -18,6 +18,7 @@ const connection = async () => {
 
 const moviereviews = new mongoose.Schema({
   reviewText: String,
+  reviewScore: Number,
 });
 
 const Review = mongoose.model("Review", moviereviews);

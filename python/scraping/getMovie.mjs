@@ -23,7 +23,7 @@ const getReviews = async (axios, movieURL) => {
     deleteAllMovieIDs(Review);
 
     const response2 = await axios.get(
-      `https://www.imdb.com${movieURL}reviews`,
+      `https://www.imdb.com${movieURL}reviews?sort=submissionDate&dir=desc&ratingFilter=0`,
       {
         headers: {
           "User-Agent":
@@ -34,14 +34,29 @@ const getReviews = async (axios, movieURL) => {
     const html2 = response2.data;
 
     const $ = cheerio.load(html2);
-    const textDiv = $("div.text.show-more__control");
+    const reviewDivs = $(
+      "div.lister-item.mode-detail.imdb-user-review.collapsable"
+    );
 
-    const promises = textDiv
+    const promises = reviewDivs
       .map(async (index, element) => {
-        const text = $(element).text();
-        console.log(text);
+        const reviewScore = $(element)
+          .find("span.rating-other-user-rating span")
+          .text()
+          .trim()
+          .split("/")[0];
+        // console.log(reviewScore);
 
-        const newText = new Review({ reviewText: text });
+        const reviewText = $(element)
+          .find("div.text.show-more__control")
+          .text();
+        // console.log(reviewText);
+
+        const newText = new Review({
+          reviewScore: reviewScore,
+          reviewText: reviewText,
+        });
+        console.log(newText);
         await newText.save();
       })
       .get();
