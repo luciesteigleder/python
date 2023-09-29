@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <script src="{% static 'js/script.js' %}"></script>
     <title>Homepage</title>
 </head>
 
@@ -23,11 +22,18 @@
     <form method="POST" action="/movies/">
         {% csrf_token %}
         <label for="movie-input">What movie would you like to know about?</label><br>
-        <input type="text" id="movie-input" name="movie" placeholder="Enter movie name"><br>
+        <input type="text" id="movie-input" name="name" placeholder="Enter movie name"><br>
         <button type="submit" id="submitMovie">Submit</button>
     </form>
 </div>
 
+<!-- <div class="chart">
+    {% if chart_path %}
+    <img src="{{ chart_path }}" alt="Chart">
+    {% endif %}
+</div> -->
+
 </body>
+    <script src="{% static 'js/script2.js' %}"></script>
 
 </html>

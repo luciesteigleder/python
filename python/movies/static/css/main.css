@@ -27,6 +27,7 @@ body {
 h1 {
     color: #4287f5;
     font-size: 36px;
+    height: 50px;
 }
 
 p {
@@ -65,4 +66,8 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #1e5be6;
+}
+
+.chart img {
+    height: 200px;
 }
