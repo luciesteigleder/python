@@ -13,25 +13,38 @@
 
 <body>
     <div class="intro">
-        <h1>Results!</h1>
-        <p>You want to know what is the general feeling about a particular movie? <br> Enter the name, and discover what
-            imdb users feel about this film!
-        </p>
+        <h1>Results for {{ movie_name }}</h1>
     </div>
+
+<div class="results">
+    <div class="chart">
+        <p class="chartDescription Pos"> Positive rates: {{ positive_score_percentage }}%</p>
+        <p class="chartDescription Neu"> Neutral rates: {{ neutral_score_percentage }}%</p>
+        <p class="chartDescription Neg"> Negative rates: {{ negative_score_percentage }}%</p>
+
+        {% if chart_path %}
+        <img src="{{ chart_path }}" alt="Chart">
+        {% endif %}
+    </div>
+
+    <div class="wordcloud">
+        <p>Positive Reviews: {{ positive_text_percentage }}%</p>
+        <p>Neutral Reviews: {{ neutral_text_percentage }}%</p>
+        <p>Negative Reviews: {{ negative_text_percentage }}%</p>
+
+        {% if wordcloud_path %}
+        <img src="{{ wordcloud_path }}" alt="Wordcloud">
+        {% endif %}
+    </div>
+</div>
 
     <div class="form">
         <form method="POST" action="/movies/results/">
             {% csrf_token %}
-            <label for="movie-input">What movie would you like to know about?</label><br>
+            <label for="movie-input">What other movie would you like to know about?</label><br>
             <input type="text" id="movie-input" name="movie_name" placeholder="Enter movie name"><br>
             <button type="submit" id="submitMovie">Submit</button>
         </form>
-    </div>
-
-    <div class="chart">
-        {% if chart_path %}
-        <img src="{{ chart_path }}" alt="Chart">
-        {% endif %}
     </div>
 
 </body>

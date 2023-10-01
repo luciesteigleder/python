@@ -68,6 +68,13 @@ button[type="submit"]:hover {
     background-color: #1e5be6;
 }
 
-.chart img {
+.results {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart img,
+.wordcloud img {
     height: 200px;
 }
