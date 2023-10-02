@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from .text_analysis import sentiment_analysis
 
-plt.rcParams.update({'font.family': 'Roboto', 'font.size': 32})
+plt.rcParams.update({'font.size': 32})
 
 class HomepageView(View):
     @csrf_exempt

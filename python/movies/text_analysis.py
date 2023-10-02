@@ -42,7 +42,7 @@ def sentiment_analysis(documents):
         print(review_text_tokens)
 
         english_stopwords = stopwords.words('english')
-        newStopWords = ['movie','film',"'", "'s", '(', ')', '.', "n't", ',', ':', '!', '?' 'would']
+        newStopWords = ['movie','film',"'", "'s", '(', ')', '.', "n't", ',', ':', '!', '?', 'would', 'movies', 'one']
         english_stopwords.extend(newStopWords)
 
 
